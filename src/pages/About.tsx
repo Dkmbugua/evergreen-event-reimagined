@@ -39,19 +39,22 @@ const values = [
 
 const team = [
   {
-    name: "Sarah Mitchell",
+    name: "Alice Kimanga",
     role: "Founder & Lead Planner",
-    bio: "With over 15 years in event management, Sarah brings creativity and expertise to every project."
+    bio: "With over 15 years in event management, Alice brings creativity and expertise to every project, turning dreams into unforgettable experiences.",
+    image: "/about%20/alice.jpg"
   },
   {
-    name: "James Kariuki",
+    name: "David King",
+    role: "Business Development Manager",
+    bio: "David drives growth and builds lasting partnerships, ensuring Evergreen Event Planner continues to expand its reach and impact.",
+    image: "/about%20/david.png"
+  },
+  {
+    name: "Chris Ndungu",
     role: "Operations Director",
-    bio: "James ensures seamless coordination and logistics for events of any scale."
-  },
-  {
-    name: "Grace Wanjiru",
-    role: "Design Specialist",
-    bio: "Grace's artistic vision transforms venues into breathtaking spaces."
+    bio: "Chris ensures seamless coordination and logistics for events of any scale, guaranteeing flawless execution every time.",
+    image: "/about%20/chris.jpg"
   }
 ];
 
@@ -100,7 +103,7 @@ const About = () => {
                 premium event management.
               </p>
               <p>
-                Our journey started when our founder, Sarah Mitchell, recognized a gap in the market for 
+                Our journey started when our founder, Alice Kimanga, recognized a gap in the market for 
                 event planning services that didn't compromise between luxury and sustainability. Since 
                 then, we've planned hundreds of successful events, from intimate garden weddings to 
                 large-scale corporate galas, always maintaining our commitment to excellence and 
@@ -155,16 +158,24 @@ const About = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          
+                    <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {team.map((member, index) => (
-              <Card key={index} className="border-border text-center">
+              <Card key={index} className="border-border text-center hover:shadow-xl transition-shadow duration-300">
                 <CardContent className="p-6">
-                  <div className="w-24 h-24 rounded-full bg-primary/10 mx-auto mb-4 flex items-center justify-center overflow-hidden">
+                  <div className="w-48 h-48 rounded-full mx-auto mb-4 overflow-hidden border-4 border-primary/20 shadow-lg bg-muted">
                     <img
-                      src={`/images/IMG-20251120-WA00${22 + index}.jpg`}
-                      alt={`Portrait of ${member.name}`}
-                      className="object-cover w-24 h-24 rounded-full"
-                      loading="lazy"
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                        const parent = target.parentElement;
+                        if (parent) {
+                          parent.innerHTML = `<div class="w-full h-full flex items-center justify-center bg-primary/10 text-primary text-4xl font-bold">${member.name.charAt(0)}</div>`;
+                        }
+                      }}
                     />
                   </div>
                   <h3 className="text-xl font-semibold text-primary mb-2">{member.name}</h3>
