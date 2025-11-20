@@ -1,4 +1,4 @@
-# Evergreen Event Planner 🌿
+# Evergreen Event Planner 🌿  https://evergreen-events.vercel.app/
 
 A premium, eco-conscious event planning website built with React, TypeScript, and modern web technologies.
 
@@ -49,7 +49,7 @@ npm install
 # Start development server
 npm run dev
 ```
-https://evergreen-event-reimagined-omega.vercel.app/
+
 
 ### First Steps
 1. Update WhatsApp number in `/src/pages/ServiceCategory.tsx`
@@ -152,7 +152,7 @@ vercel deploy
 
 ## Project info
 
-**URL**:https://evergreen-event-reimagined-omega.vercel.app/
+**URL**:https://evergreen-events.vercel.app/
 
 ## How can I edit this code?
 
