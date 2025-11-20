@@ -1,32 +1,23 @@
-import { Phone, Mail, MapPin, Clock, Home, Briefcase, Users, Image, MessageSquare, Contact } from "lucide-react";
+import { useState } from "react";
+import { Home, Briefcase, Users, Image, MessageSquare, Contact, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import logoLeaf from "@/assets/logo-leaf.png";
 
 const Header = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const navLinks = [
+    { href: "/", label: "Home", icon: Home },
+    { href: "/services", label: "Services", icon: Briefcase },
+    { href: "/about", label: "About Us", icon: Users },
+    { href: "/portfolio", label: "Portfolio", icon: MessageSquare },
+    { href: "/gallery", label: "Gallery", icon: Image },
+    { href: "/contact", label: "Contact", icon: Contact },
+  ];
+
   return (
     <header className="w-full">
-      {/* Top info bar */}
-      <div className="bg-primary text-primary-foreground py-2 px-4">
-        <div className="container mx-auto flex flex-wrap items-center justify-between text-sm gap-2">
-          <a href="tel:+254729239973" className="flex items-center gap-2 hover:text-gold transition-colors">
-            <Phone className="h-4 w-4" />
-            <span>0729239973</span>
-          </a>
-          <a href="mailto:dkmbugua70@gmail.com" className="flex items-center gap-2 hover:text-gold transition-colors">
-            <Mail className="h-4 w-4" />
-            <span>dkmbugua70@gmail.com</span>
-          </a>
-          <div className="flex items-center gap-2">
-            <MapPin className="h-4 w-4" />
-            <span>Mombasa Shanzu</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <Clock className="h-4 w-4" />
-            <span>Mon - Sat 8:00 - 18:00</span>
-          </div>
-        </div>
-      </div>
-
       {/* Main navigation */}
       <div className="bg-background border-b border-border py-4 px-4">
         <div className="container mx-auto flex items-center justify-between">
@@ -38,36 +29,57 @@ const Header = () => {
             </div>
           </div>
 
+          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-6">
-            <a href="/" className="flex items-center gap-2 text-foreground hover:text-primary transition-colors font-medium group">
-              <Home className="h-4 w-4 group-hover:scale-110 transition-transform" />
-              Home
-            </a>
-            <a href="/services" className="flex items-center gap-2 text-foreground hover:text-primary transition-colors font-medium group">
-              <Briefcase className="h-4 w-4 group-hover:scale-110 transition-transform" />
-              Services
-            </a>
-            <a href="/about" className="flex items-center gap-2 text-foreground hover:text-primary transition-colors font-medium group">
-              <Users className="h-4 w-4 group-hover:scale-110 transition-transform" />
-              About Us
-            </a>
-            <a href="/portfolio" className="flex items-center gap-2 text-foreground hover:text-primary transition-colors font-medium group">
-              <MessageSquare className="h-4 w-4 group-hover:scale-110 transition-transform" />
-              Portfolio
-            </a>
-            <a href="/gallery" className="flex items-center gap-2 text-foreground hover:text-primary transition-colors font-medium group">
-              <Image className="h-4 w-4 group-hover:scale-110 transition-transform" />
-              Gallery
-            </a>
-            <a href="/contact" className="flex items-center gap-2 text-foreground hover:text-primary transition-colors font-medium group">
-              <Contact className="h-4 w-4 group-hover:scale-110 transition-transform" />
-              Contact
-            </a>
+            {navLinks.map((link) => {
+              const Icon = link.icon;
+              return (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="flex items-center gap-2 text-foreground hover:text-primary transition-colors font-medium group"
+                >
+                  <Icon className="h-4 w-4 group-hover:scale-110 transition-transform" />
+                  {link.label}
+                </a>
+              );
+            })}
           </nav>
 
-          <Button className="bg-accent text-accent-foreground hover:bg-accent/90 hover:scale-105 transition-transform">
+          {/* Desktop Get Quote Button */}
+          <Button className="hidden md:flex bg-accent text-accent-foreground hover:bg-accent/90 hover:scale-105 transition-transform">
             Get Quote
           </Button>
+
+          {/* Mobile Menu */}
+          <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" className="md:hidden">
+                <Menu className="h-6 w-6" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+              <nav className="flex flex-col gap-4 mt-8">
+                {navLinks.map((link) => {
+                  const Icon = link.icon;
+                  return (
+                    <a
+                      key={link.href}
+                      href={link.href}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="flex items-center gap-3 text-foreground hover:text-primary transition-colors font-medium p-3 rounded-lg hover:bg-muted"
+                    >
+                      <Icon className="h-5 w-5" />
+                      {link.label}
+                    </a>
+                  );
+                })}
+                <Button className="mt-4 bg-accent text-accent-foreground hover:bg-accent/90">
+                  Get Quote
+                </Button>
+              </nav>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
     </header>
