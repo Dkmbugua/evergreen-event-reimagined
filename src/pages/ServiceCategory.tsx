@@ -37,7 +37,7 @@ const ServiceCategory = () => {
     );
   }
 
-  const whatsappNumber = "+254712345678"; // Replace with actual WhatsApp number
+  const whatsappNumber = "+254729239973"; // updated to user-provided phone
   const whatsappLink = `https://wa.me/${whatsappNumber.replace(/\+/g, "")}?text=${encodeURIComponent(service.whatsappMessage)}`;
 
   const handleBookingSubmit = (e: React.FormEvent) => {

@@ -209,8 +209,8 @@ const Contact = () => {
                   <div>
                     <h3 className="font-semibold text-primary mb-2">Phone</h3>
                     <p className="text-muted-foreground mb-1">
-                      <a href="tel:+254XXXXXXXXX" className="hover:text-accent transition-colors">
-                        +254-XXX-XXX-XXX
+                      <a href="tel:+254729239973" className="hover:text-accent transition-colors">
+                        0729239973
                       </a>
                     </p>
                     <p className="text-sm text-muted-foreground">Mon - Sat, 8:00 AM - 6:00 PM</p>
@@ -226,13 +226,8 @@ const Contact = () => {
                   <div>
                     <h3 className="font-semibold text-primary mb-2">Email</h3>
                     <p className="text-muted-foreground mb-1">
-                      <a href="mailto:info@evergreeneventplanner.com" className="hover:text-accent transition-colors">
-                        info@evergreeneventplanner.com
-                      </a>
-                    </p>
-                    <p className="text-muted-foreground">
-                      <a href="mailto:bookings@evergreeneventplanner.com" className="hover:text-accent transition-colors">
-                        bookings@evergreeneventplanner.com
+                      <a href="mailto:dkmbugua70@gmail.com" className="hover:text-accent transition-colors">
+                        dkmbugua70@gmail.com
                       </a>
                     </p>
                   </div>
@@ -246,8 +241,8 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-primary mb-2">Location</h3>
-                    <p className="text-muted-foreground mb-1">Shanzu, Mombasa, Kenya</p>
-                    <p className="text-sm text-muted-foreground">Serving Mombasa and the entire coastal region</p>
+                    <p className="text-muted-foreground mb-1">Mombasa Shanzu, Kenya</p>
+                    <p className="text-sm text-muted-foreground">Serving Mombasa Shanzu and the entire coastal region</p>
                   </div>
                 </CardContent>
               </Card>
@@ -294,12 +289,12 @@ const Contact = () => {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Evergreen Event Planner Office Location - Shanzu, Mombasa"
+                title="Evergreen Event Planner Office Location - Mombasa Shanzu"
               />
             </div>
             <div className="mt-6 text-center">
-              <p className="text-lg font-semibold text-primary">Shanzu, Mombasa, Kenya</p>
-              <p className="text-muted-foreground mt-2">Serving Mombasa and the entire coastal region</p>
+              <p className="text-lg font-semibold text-primary">Mombasa Shanzu, Kenya</p>
+              <p className="text-muted-foreground mt-2">Serving Mombasa Shanzu and the entire coastal region</p>
             </div>
           </div>
         </div>

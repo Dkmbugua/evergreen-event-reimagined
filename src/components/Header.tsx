@@ -8,17 +8,17 @@ const Header = () => {
       {/* Top info bar */}
       <div className="bg-primary text-primary-foreground py-2 px-4">
         <div className="container mx-auto flex flex-wrap items-center justify-between text-sm gap-2">
-          <a href="tel:+254-XXX-XXX-XXX" className="flex items-center gap-2 hover:text-gold transition-colors">
+          <a href="tel:+254729239973" className="flex items-center gap-2 hover:text-gold transition-colors">
             <Phone className="h-4 w-4" />
-            <span>+254-XXX-XXX-XXX</span>
+            <span>0729239973</span>
           </a>
-          <a href="mailto:info@evergreeneventplanner.com" className="flex items-center gap-2 hover:text-gold transition-colors">
+          <a href="mailto:dkmbugua70@gmail.com" className="flex items-center gap-2 hover:text-gold transition-colors">
             <Mail className="h-4 w-4" />
-            <span>info@evergreeneventplanner.com</span>
+            <span>dkmbugua70@gmail.com</span>
           </a>
           <div className="flex items-center gap-2">
             <MapPin className="h-4 w-4" />
-            <span>Shanzu, Mombasa</span>
+            <span>Mombasa Shanzu</span>
           </div>
           <div className="flex items-center gap-2">
             <Clock className="h-4 w-4" />

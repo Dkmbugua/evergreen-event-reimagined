@@ -394,8 +394,8 @@ const Admin = () => {
                   <Label htmlFor="whatsapp">WhatsApp Number</Label>
                   <Input
                     id="whatsapp"
-                    placeholder="+254712345678"
-                    defaultValue="+254712345678"
+                    placeholder="+254729239973"
+                    defaultValue="+254729239973"
                   />
                   <p className="text-sm text-muted-foreground mt-1">
                     Used for WhatsApp integration across the site
@@ -403,11 +403,11 @@ const Admin = () => {
                 </div>
                 <div>
                   <Label htmlFor="phone">Contact Phone</Label>
-                  <Input id="phone" placeholder="+254XXX XXX XXX" />
+                  <Input id="phone" placeholder="0729239973" defaultValue="0729239973" />
                 </div>
                 <div>
                   <Label htmlFor="email">Contact Email</Label>
-                  <Input id="email" type="email" placeholder="info@evergreeneventplanner.com" />
+                  <Input id="email" type="email" placeholder="dkmbugua70@gmail.com" defaultValue="dkmbugua70@gmail.com" />
                 </div>
                 <Button>
                   <Save className="mr-2 h-4 w-4" />

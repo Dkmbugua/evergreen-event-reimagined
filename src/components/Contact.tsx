@@ -39,7 +39,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-primary mb-2">Phone</h4>
-                  <p className="text-muted-foreground">+254-XXX-XXX-XXX</p>
+                  <p className="text-muted-foreground">0729239973</p>
                   <p className="text-sm text-muted-foreground mt-1">Mon - Sat, 8:00 AM - 6:00 PM</p>
                 </div>
               </CardContent>
@@ -52,8 +52,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-primary mb-2">Email</h4>
-                  <p className="text-muted-foreground">info@evergreeneventplanner.com</p>
-                  <p className="text-muted-foreground">bookings@evergreeneventplanner.com</p>
+                  <p className="text-muted-foreground">dkmbugua70@gmail.com</p>
                 </div>
               </CardContent>
             </Card>
@@ -65,8 +64,8 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-primary mb-2">Location</h4>
-                  <p className="text-muted-foreground">Nairobi, Kenya</p>
-                  <p className="text-sm text-muted-foreground mt-1">Serving Nairobi and surrounding areas</p>
+                  <p className="text-muted-foreground">Mombasa Shanzu, Kenya</p>
+                  <p className="text-sm text-muted-foreground mt-1">Serving Mombasa Shanzu and the surrounding coastal region</p>
                 </div>
               </CardContent>
             </Card>
