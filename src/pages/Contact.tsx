@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -10,6 +11,7 @@ import Footer from "@/components/Footer";
 
 const Contact = () => {
   const { toast } = useToast();
+  const [searchParams] = useSearchParams();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -18,13 +20,57 @@ const Contact = () => {
     message: ""
   });
 
+  // Pre-fill event type based on URL parameter
+  useEffect(() => {
+    const eventType = searchParams.get('type');
+    if (eventType) {
+      const eventTypeMap: { [key: string]: string } = {
+        'social': 'Social Event (Wedding, Birthday, Anniversary, etc.)',
+        'corporate': 'Corporate Event (Team Building, Product Launch, Gala, etc.)'
+      };
+      setFormData(prev => ({
+        ...prev,
+        eventType: eventTypeMap[eventType] || eventType
+      }));
+    }
+  }, [searchParams]);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for contacting us. We'll get back to you within 24 hours.",
+    
+    // Simulate admin notification (in production, this would be a backend API call)
+    console.log('📧 Admin Notification:', {
+      from: formData.email,
+      name: formData.name,
+      phone: formData.phone,
+      eventType: formData.eventType,
+      message: formData.message,
+      timestamp: new Date().toISOString(),
+      priority: formData.eventType.includes('Corporate') ? 'High' : 'Normal'
     });
-    setFormData({ name: "", email: "", phone: "", eventType: "", message: "" });
+
+    toast({
+      title: "Booking Request Sent! 🎉",
+      description: `Thank you ${formData.name}! We've received your ${formData.eventType} inquiry. Our team will contact you within 24 hours with a personalized quote.`,
+    });
+    
+    // Reset form
+    const eventType = searchParams.get('type');
+    if (eventType) {
+      const eventTypeMap: { [key: string]: string } = {
+        'social': 'Social Event (Wedding, Birthday, Anniversary, etc.)',
+        'corporate': 'Corporate Event (Team Building, Product Launch, Gala, etc.)'
+      };
+      setFormData({ 
+        name: "", 
+        email: "", 
+        phone: "", 
+        eventType: eventTypeMap[eventType] || "", 
+        message: "" 
+      });
+    } else {
+      setFormData({ name: "", email: "", phone: "", eventType: "", message: "" });
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -41,10 +87,15 @@ const Contact = () => {
       {/* Hero Section */}
       <section className="bg-primary text-primary-foreground py-20">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">Get In Touch</h1>
+          <h1 className="text-5xl md:text-6xl font-bold mb-6">
+            {searchParams.get('type') === 'social' ? 'Plan Your Social Event' : 
+             searchParams.get('type') === 'corporate' ? 'Plan Your Corporate Event' : 
+             'Get In Touch'}
+          </h1>
           <p className="text-xl text-primary-foreground/90 max-w-3xl mx-auto">
-            Ready to start planning your perfect event? We'd love to hear from you. 
-            Reach out and let's create something extraordinary together.
+            {searchParams.get('type') ? 
+              "Fill out the form below and we'll get back to you within 24 hours with a personalized quote and consultation." :
+              "Ready to start planning your perfect event? We'd love to hear from you. Reach out and let's create something extraordinary together."}
           </p>
         </div>
       </section>
@@ -106,7 +157,7 @@ const Contact = () => {
 
                 <div>
                   <label htmlFor="eventType" className="block text-sm font-medium text-foreground mb-2">
-                    Type of Event
+                    Type of Event *
                   </label>
                   <Input
                     id="eventType"
@@ -115,7 +166,13 @@ const Contact = () => {
                     onChange={handleChange}
                     placeholder="e.g., Wedding, Corporate Event, Birthday Party"
                     className="border-border"
+                    required
                   />
+                  {formData.eventType && (
+                    <p className="text-xs text-green-600 mt-1">
+                      ✓ Event type selected: {formData.eventType}
+                    </p>
+                  )}
                 </div>
 
                 <div>
@@ -189,8 +246,8 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-primary mb-2">Location</h3>
-                    <p className="text-muted-foreground mb-1">Nairobi, Kenya</p>
-                    <p className="text-sm text-muted-foreground">Serving Nairobi and surrounding areas</p>
+                    <p className="text-muted-foreground mb-1">Shanzu, Mombasa, Kenya</p>
+                    <p className="text-sm text-muted-foreground">Serving Mombasa and the entire coastal region</p>
                   </div>
                 </CardContent>
               </Card>
@@ -223,17 +280,26 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Map Placeholder */}
+      {/* Map Section */}
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-primary mb-6 text-center">Visit Our Office</h2>
-            <div className="bg-primary/10 rounded-lg h-96 flex items-center justify-center">
-              <div className="text-center">
-                <MapPin className="h-16 w-16 text-primary mx-auto mb-4" />
-                <p className="text-muted-foreground">Office Location Map</p>
-                <p className="text-sm text-muted-foreground mt-2">Nairobi, Kenya</p>
-              </div>
+            <div className="rounded-lg overflow-hidden shadow-lg">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63722.89311568304!2d39.7159!3d-4.0435!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x18400f7b4e9e24f5%3A0x4c3f1c1f1c1f1c1f!2sShanzu%2C%20Mombasa%2C%20Kenya!5e0!3m2!1sen!2ske!4v1234567890"
+                width="100%"
+                height="450"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Evergreen Event Planner Office Location - Shanzu, Mombasa"
+              />
+            </div>
+            <div className="mt-6 text-center">
+              <p className="text-lg font-semibold text-primary">Shanzu, Mombasa, Kenya</p>
+              <p className="text-muted-foreground mt-2">Serving Mombasa and the entire coastal region</p>
             </div>
           </div>
         </div>

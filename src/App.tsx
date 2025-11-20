@@ -10,6 +10,10 @@ import Portfolio from "./pages/Portfolio";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import Blog from "./pages/Blog";
+import Gallery from "./pages/Gallery";
+import ServiceCategory from "./pages/ServiceCategory";
+import Admin from "./pages/Admin";
+
 // Placeholder legal pages
 const PrivacyPolicy = () => (
   <div className="min-h-screen flex flex-col justify-center items-center bg-background text-center p-8">
@@ -40,6 +44,9 @@ const App = () => (
           <Route path="/about" element={<About />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/services/:slug" element={<ServiceCategory />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/gallery" element={<Gallery />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/contact" element={<Contact />} />

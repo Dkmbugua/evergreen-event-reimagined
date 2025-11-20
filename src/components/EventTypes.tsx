@@ -25,8 +25,14 @@ const EventTypes = () => {
                 we make the planning process effortless and the execution flawless. Your special moments 
                 deserve extraordinary celebrations.
               </p>
-              <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
-                Plan Social Event
+              <Button 
+                variant="outline" 
+                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                asChild
+              >
+                <a href="/contact?type=social">
+                  Plan Social Event
+                </a>
               </Button>
             </CardContent>
           </Card>
@@ -42,8 +48,14 @@ const EventTypes = () => {
                 worry-free, elegant corporate events that reflect your brand and impress your stakeholders. 
                 Professional excellence guaranteed.
               </p>
-              <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
-                Plan Corporate Event
+              <Button 
+                variant="outline" 
+                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                asChild
+              >
+                <a href="/contact?type=corporate">
+                  Plan Corporate Event
+                </a>
               </Button>
             </CardContent>
           </Card>

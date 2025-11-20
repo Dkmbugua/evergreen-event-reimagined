@@ -1,66 +1,10 @@
-import { Calendar, Tent, Armchair, Flower2, Camera, Users, Utensils, Music, Sparkles } from "lucide-react";
+import { Calendar, Tent, Armchair, Flower2, Camera, Utensils } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import tentSetup from "@/assets/tent-setup.jpg";
-
-const services = [
-  {
-    icon: Calendar,
-    title: "Full Event Management",
-    description: "From intimate gatherings to grand celebrations, we handle every aspect of your event planning. Our experienced team ensures seamless coordination from concept to execution.",
-    features: ["Timeline Planning", "Vendor Coordination", "Budget Management", "On-site Supervision"]
-  },
-  {
-    icon: Tent,
-    title: "Tent & Canopy Rentals",
-    description: "Premium tent solutions for any outdoor event. Weather-proof, elegant structures with beautiful draping options and professional installation.",
-    features: ["Various Sizes Available", "Weather Protection", "Professional Setup", "Decorative Draping"]
-  },
-  {
-    icon: Armchair,
-    title: "Furniture & Equipment Hire",
-    description: "Extensive collection of elegant furniture including tables, chairs, linens, and event equipment to match your event's style perfectly.",
-    features: ["Gold Chiavari Chairs", "Round & Rectangular Tables", "Premium Linens", "Stage & Podium Rental"]
-  },
-  {
-    icon: Flower2,
-    title: "Décor & Floral Design",
-    description: "Breathtaking floral arrangements and décor that transform venues into magical spaces. Custom designs tailored to your vision and theme.",
-    features: ["Custom Floral Arrangements", "Centerpieces", "Ceremony Décor", "Venue Styling"]
-  },
-  {
-    icon: Camera,
-    title: "Photography & Videography",
-    description: "Professional documentation of your special moments. Our talented photographers and videographers capture every emotion and detail.",
-    features: ["Event Coverage", "Highlight Reels", "Photo Albums", "Drone Photography"]
-  },
-  {
-    icon: Users,
-    title: "Catering Services",
-    description: "Exquisite culinary experiences from our trusted catering partners. Diverse menu options for every palate and dietary requirement.",
-    features: ["Custom Menus", "Buffet & Plated Service", "Bar Services", "Dessert Stations"]
-  },
-  {
-    icon: Music,
-    title: "Entertainment & Audio",
-    description: "Professional sound systems, lighting, and entertainment coordination to keep your guests engaged and create the perfect atmosphere.",
-    features: ["PA Systems", "Stage Lighting", "DJ Services", "Live Band Coordination"]
-  },
-  {
-    icon: Utensils,
-    title: "Tableware & Serving",
-    description: "Complete collection of elegant tableware, serving dishes, glassware, and cutlery for sophisticated dining experiences.",
-    features: ["Fine China", "Glassware Sets", "Serving Equipment", "Beverage Stations"]
-  },
-  {
-    icon: Sparkles,
-    title: "Special Effects",
-    description: "Add wow factor with special effects including lighting design, fog machines, sparklers, and other creative elements.",
-    features: ["LED Uplighting", "Fog Effects", "Sparkler Displays", "Projection Mapping"]
-  }
-];
+import { serviceCategories } from "@/data/services";
+import { Link } from "react-router-dom";
 
 const Services = () => {
   return (
@@ -71,7 +15,7 @@ const Services = () => {
       <section className="relative h-[400px] w-full overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${tentSetup})` }}
+          style={{ backgroundImage: `url('/images/IMG-20251120-WA0025.jpg')` }}
         >
           <div className="absolute inset-0 bg-primary/80" />
         </div>
@@ -97,25 +41,38 @@ const Services = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => {
-              const Icon = service.icon;
+            {serviceCategories.map((service) => {
+              const iconMap: { [key: string]: any } = {
+                Calendar,
+                Tent,
+                Armchair,
+                Flower2,
+                Camera,
+                Utensils
+              };
+              const Icon = iconMap[service.icon] || Calendar;
+              
               return (
-                <Card key={index} className="border-border hover:border-primary transition-all duration-300 hover:shadow-xl">
-                  <CardContent className="p-6">
-                    <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                      <Icon className="h-8 w-8 text-primary" />
+                <Card key={service.id} className="border-border hover:border-primary transition-all duration-300 hover:shadow-xl cursor-pointer group">
+                  <Link to={`/services/${service.slug}`}>
+                    <div className="relative h-48 overflow-hidden">
+                      <img
+                        src={service.images[0]}
+                        alt={service.title}
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                      />
                     </div>
-                    <h3 className="text-xl font-semibold text-primary mb-3">{service.title}</h3>
-                    <p className="text-muted-foreground mb-4">{service.description}</p>
-                    <ul className="space-y-2">
-                      {service.features.map((feature, idx) => (
-                        <li key={idx} className="text-sm text-muted-foreground flex items-center">
-                          <span className="w-1.5 h-1.5 rounded-full bg-accent mr-2" />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
+                    <CardContent className="p-6">
+                      <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                        <Icon className="h-8 w-8 text-primary" />
+                      </div>
+                      <h3 className="text-xl font-semibold text-primary mb-3">{service.title}</h3>
+                      <p className="text-muted-foreground mb-4 line-clamp-3">{service.description}</p>
+                      <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+                        View Details
+                      </Button>
+                    </CardContent>
+                  </Link>
                 </Card>
               );
             })}

@@ -1,4 +1,4 @@
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Home, Briefcase, Users, Image, MessageSquare, Contact } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logoLeaf from "@/assets/logo-leaf.png";
 
@@ -18,7 +18,7 @@ const Header = () => {
           </a>
           <div className="flex items-center gap-2">
             <MapPin className="h-4 w-4" />
-            <span>Nairobi, Kenya</span>
+            <span>Shanzu, Mombasa</span>
           </div>
           <div className="flex items-center gap-2">
             <Clock className="h-4 w-4" />
@@ -39,24 +39,33 @@ const Header = () => {
           </div>
 
           <nav className="hidden md:flex items-center gap-6">
-            <a href="/" className="text-foreground hover:text-primary transition-colors font-medium">
+            <a href="/" className="flex items-center gap-2 text-foreground hover:text-primary transition-colors font-medium group">
+              <Home className="h-4 w-4 group-hover:scale-110 transition-transform" />
               Home
             </a>
-            <a href="/services" className="text-foreground hover:text-primary transition-colors font-medium">
+            <a href="/services" className="flex items-center gap-2 text-foreground hover:text-primary transition-colors font-medium group">
+              <Briefcase className="h-4 w-4 group-hover:scale-110 transition-transform" />
               Services
             </a>
-            <a href="/about" className="text-foreground hover:text-primary transition-colors font-medium">
+            <a href="/about" className="flex items-center gap-2 text-foreground hover:text-primary transition-colors font-medium group">
+              <Users className="h-4 w-4 group-hover:scale-110 transition-transform" />
               About Us
             </a>
-            <a href="/portfolio" className="text-foreground hover:text-primary transition-colors font-medium">
+            <a href="/portfolio" className="flex items-center gap-2 text-foreground hover:text-primary transition-colors font-medium group">
+              <MessageSquare className="h-4 w-4 group-hover:scale-110 transition-transform" />
               Portfolio
             </a>
-            <a href="/contact" className="text-foreground hover:text-primary transition-colors font-medium">
+            <a href="/gallery" className="flex items-center gap-2 text-foreground hover:text-primary transition-colors font-medium group">
+              <Image className="h-4 w-4 group-hover:scale-110 transition-transform" />
+              Gallery
+            </a>
+            <a href="/contact" className="flex items-center gap-2 text-foreground hover:text-primary transition-colors font-medium group">
+              <Contact className="h-4 w-4 group-hover:scale-110 transition-transform" />
               Contact
             </a>
           </nav>
 
-          <Button className="bg-accent text-accent-foreground hover:bg-accent/90">
+          <Button className="bg-accent text-accent-foreground hover:bg-accent/90 hover:scale-105 transition-transform">
             Get Quote
           </Button>
         </div>
