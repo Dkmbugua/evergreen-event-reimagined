@@ -39,19 +39,19 @@ const Header = () => {
           </div>
 
           <nav className="hidden md:flex items-center gap-6">
-            <a href="#home" className="text-foreground hover:text-primary transition-colors font-medium">
+            <a href="/" className="text-foreground hover:text-primary transition-colors font-medium">
               Home
             </a>
-            <a href="#services" className="text-foreground hover:text-primary transition-colors font-medium">
+            <a href="/services" className="text-foreground hover:text-primary transition-colors font-medium">
               Services
             </a>
-            <a href="#about" className="text-foreground hover:text-primary transition-colors font-medium">
+            <a href="/about" className="text-foreground hover:text-primary transition-colors font-medium">
               About Us
             </a>
-            <a href="#portfolio" className="text-foreground hover:text-primary transition-colors font-medium">
+            <a href="/portfolio" className="text-foreground hover:text-primary transition-colors font-medium">
               Portfolio
             </a>
-            <a href="#contact" className="text-foreground hover:text-primary transition-colors font-medium">
+            <a href="/contact" className="text-foreground hover:text-primary transition-colors font-medium">
               Contact
             </a>
           </nav>
