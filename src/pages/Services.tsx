@@ -91,8 +91,13 @@ const Services = () => {
             <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
               Get a Custom Quote
             </Button>
-            <Button size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
-              View Portfolio
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="border-accent text-accent font-semibold bg-white hover:bg-accent hover:text-white hover:border-accent transition-colors"
+            >
+              <a href="/portfolio">View Portfolio</a>
             </Button>
           </div>
         </div>
