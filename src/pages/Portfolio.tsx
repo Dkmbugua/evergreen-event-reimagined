@@ -3,76 +3,82 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import heroWedding from "@/assets/hero-wedding.jpg";
-import corporateEvent from "@/assets/corporate-event.jpg";
-import tentSetup from "@/assets/tent-setup.jpg";
-import furnitureHire from "@/assets/furniture-hire.jpg";
+
 
 const categories = ["All", "Weddings", "Corporate", "Social", "Outdoor"];
 
 const portfolioItems = [
   {
-    image: heroWedding,
+    image: "/images/IMG-20251120-WA0022.jpg",
     title: "Elegant Garden Wedding",
     category: "Weddings",
-    description: "A breathtaking outdoor ceremony for 200 guests with sustainable floral arrangements",
-    details: "Location: Private Estate, Karen"
+    description: "A breathtaking outdoor ceremony for 200 guests with sustainable floral arrangements.",
+    details: "Location: Private Estate, Karen",
+    alt: "Elegant garden wedding setup with floral arrangements"
   },
   {
-    image: corporateEvent,
+    image: "/images/IMG-20251120-WA0023.jpg",
     title: "Annual Corporate Gala",
     category: "Corporate",
-    description: "Sophisticated gala dinner for a Fortune 500 company with 300+ attendees",
-    details: "Location: Safari Park Hotel"
+    description: "Sophisticated gala dinner for a Fortune 500 company with 300+ attendees.",
+    details: "Location: Safari Park Hotel",
+    alt: "Corporate gala dinner with elegant table settings"
   },
   {
-    image: tentSetup,
+    image: "/images/IMG-20251120-WA0024.jpg",
     title: "Luxury Tent Reception",
     category: "Outdoor",
-    description: "Romantic evening reception under elegant tent with string lighting",
-    details: "Location: Ngong Hills"
+    description: "Romantic evening reception under elegant tent with string lighting.",
+    details: "Location: Ngong Hills",
+    alt: "Luxury tent reception with string lights at dusk"
   },
   {
-    image: furnitureHire,
+    image: "/images/IMG-20251120-WA0025.jpg",
     title: "Premium Birthday Celebration",
     category: "Social",
-    description: "Intimate 50th birthday party with gold and white theme",
-    details: "Location: Private Residence"
+    description: "Intimate 50th birthday party with gold and white theme.",
+    details: "Location: Private Residence",
+    alt: "Birthday celebration with gold and white decor"
   },
   {
-    image: corporateEvent,
+    image: "/images/IMG-20251120-WA0026.jpg",
     title: "Product Launch Event",
     category: "Corporate",
-    description: "High-profile product launch with interactive displays and entertainment",
-    details: "Location: Villa Rosa Kempinski"
+    description: "High-profile product launch with interactive displays and entertainment.",
+    details: "Location: Villa Rosa Kempinski",
+    alt: "Product launch event with branded displays"
   },
   {
-    image: heroWedding,
+    image: "/images/IMG-20251120-WA0027.jpg",
     title: "Destination Wedding",
     category: "Weddings",
-    description: "Three-day wedding celebration with traditional and modern elements",
-    details: "Location: Diani Beach"
+    description: "Three-day wedding celebration with traditional and modern elements.",
+    details: "Location: Diani Beach",
+    alt: "Beach wedding ceremony setup with ocean view"
   },
   {
-    image: tentSetup,
+    image: "/images/IMG-20251120-WA0028.jpg",
     title: "Charity Fundraising Gala",
     category: "Social",
-    description: "Elegant fundraising dinner supporting environmental conservation",
-    details: "Location: Nairobi National Museum"
+    description: "Elegant fundraising dinner supporting environmental conservation.",
+    details: "Location: Nairobi National Museum",
+    alt: "Charity gala dinner with green-themed decor"
   },
   {
-    image: furnitureHire,
+    image: "/images/IMG-20251120-WA0029.jpg",
     title: "Team Building Retreat",
     category: "Corporate",
-    description: "Two-day corporate retreat with outdoor activities and evening dinner",
-    details: "Location: Great Rift Valley Lodge"
+    description: "Two-day corporate retreat with outdoor activities and evening dinner.",
+    details: "Location: Great Rift Valley Lodge",
+    alt: "Team building retreat with outdoor activities"
   },
   {
-    image: heroWedding,
+    image: "/images/IMG-20251120-WA0030.jpg",
     title: "Traditional Wedding Ceremony",
     category: "Weddings",
-    description: "Beautiful blend of traditional customs and contemporary elegance",
-    details: "Location: Karura Forest"
+    description: "Beautiful blend of traditional customs and contemporary elegance.",
+    details: "Location: Karura Forest",
+    alt: "Traditional wedding ceremony in a forest setting"
   }
 ];
 
@@ -129,7 +135,7 @@ const Portfolio = () => {
                 <div className="relative h-64 overflow-hidden">
                   <img
                     src={item.image}
-                    alt={item.title}
+                    alt={item.alt}
                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                   />
                   <div className="absolute top-4 right-4">

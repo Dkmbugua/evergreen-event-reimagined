@@ -57,6 +57,10 @@ const Footer = () => {
 
         <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center text-sm text-primary-foreground/70">
           <p>&copy; 2024 Evergreen Event Planner. All rights reserved. Designed with <Leaf className="inline h-4 w-4 text-gold" /> for sustainability.</p>
+          <div className="mt-2">
+            <a href="/privacy-policy" className="underline hover:text-gold mx-2">Privacy Policy</a>
+            <a href="/terms" className="underline hover:text-gold mx-2">Terms & Conditions</a>
+          </div>
         </div>
       </div>
     </footer>

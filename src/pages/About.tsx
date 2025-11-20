@@ -2,7 +2,7 @@ import { Leaf, Award, Heart, Sparkles, Users, Target, Globe } from "lucide-react
 import { Card, CardContent } from "@/components/ui/card";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import corporateEvent from "@/assets/corporate-event.jpg";
+// import corporateEvent from "@/assets/corporate-event.jpg";
 
 const values = [
   {
@@ -64,7 +64,7 @@ const About = () => {
       <section className="relative h-[400px] w-full overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${corporateEvent})` }}
+          style={{ backgroundImage: `url('/images/IMG-20251120-WA0022.jpg')` }}
         >
           <div className="absolute inset-0 bg-primary/80" />
         </div>
@@ -75,6 +75,15 @@ const About = () => {
               Creating unforgettable moments through sustainable, elegant event planning
             </p>
           </div>
+        </div>
+      </section>
+      {/* Sustainability Commitment */}
+      <section className="py-16 bg-forest/10">
+        <div className="container mx-auto px-4 max-w-4xl text-center">
+          <h2 className="text-3xl font-bold text-forest mb-4">Our Sustainability Commitment</h2>
+          <p className="text-lg text-muted-foreground mb-4">
+            At Evergreen, we believe that luxury and sustainability go hand in hand. We prioritize eco-friendly materials, reusable decor, local sourcing, and waste reduction at every event. Our team is dedicated to minimizing our environmental footprint while delivering exceptional experiences.
+          </p>
         </div>
       </section>
 
@@ -150,8 +159,13 @@ const About = () => {
             {team.map((member, index) => (
               <Card key={index} className="border-border text-center">
                 <CardContent className="p-6">
-                  <div className="w-24 h-24 rounded-full bg-primary/10 mx-auto mb-4 flex items-center justify-center">
-                    <Users className="h-12 w-12 text-primary" />
+                  <div className="w-24 h-24 rounded-full bg-primary/10 mx-auto mb-4 flex items-center justify-center overflow-hidden">
+                    <img
+                      src={`/images/IMG-20251120-WA00${22 + index}.jpg`}
+                      alt={`Portrait of ${member.name}`}
+                      className="object-cover w-24 h-24 rounded-full"
+                      loading="lazy"
+                    />
                   </div>
                   <h3 className="text-xl font-semibold text-primary mb-2">{member.name}</h3>
                   <p className="text-accent font-medium mb-3">{member.role}</p>
@@ -160,6 +174,30 @@ const About = () => {
               </Card>
             ))}
           </div>
+              {/* FAQ Section */}
+              <section className="py-20 bg-muted/30">
+                <div className="container mx-auto px-4 max-w-4xl">
+                  <h2 className="text-3xl font-bold text-primary mb-6 text-center">Frequently Asked Questions</h2>
+                  <div className="space-y-6 text-lg text-muted-foreground">
+                    <div>
+                      <h3 className="font-semibold text-primary mb-2">Do you offer eco-friendly event options?</h3>
+                      <p>Yes! Sustainability is at the heart of everything we do. We offer a range of green options, including reusable decor, local sourcing, and waste reduction strategies.</p>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-primary mb-2">Can you handle large-scale corporate events?</h3>
+                      <p>Absolutely. Our experienced team has managed events for hundreds of guests, ensuring seamless logistics and memorable experiences.</p>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-primary mb-2">How far in advance should I book?</h3>
+                      <p>We recommend booking as early as possible, especially for peak seasons. However, we do our best to accommodate last-minute requests.</p>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-primary mb-2">Do you provide on-site coordination?</h3>
+                      <p>Yes, our planners are present on-site to ensure every detail is executed flawlessly on your big day.</p>
+                    </div>
+                  </div>
+                </div>
+              </section>
         </div>
       </section>
 
