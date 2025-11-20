@@ -297,4 +297,4 @@ See `BACKEND_SETUP.md` for complete implementation guide.
 
 **Demo Login**: admin / admin123 (for admin panel)
 
-**Contact**: Update WhatsApp number in code before deployment.
+
