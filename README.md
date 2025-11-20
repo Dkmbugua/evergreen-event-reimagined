@@ -49,8 +49,7 @@ npm install
 # Start development server
 npm run dev
 ```
-
-Visit http://localhost:5173
+https://evergreen-event-reimagined-omega.vercel.app/
 
 ### First Steps
 1. Update WhatsApp number in `/src/pages/ServiceCategory.tsx`
@@ -153,7 +152,7 @@ vercel deploy
 
 ## Project info
 
-**URL**: https://lovable.dev/projects/94e257cc-dab8-4202-9aca-371630a8a876
+**URL**:https://evergreen-event-reimagined-omega.vercel.app/
 
 ## How can I edit this code?
 
@@ -161,7 +160,7 @@ There are several ways of editing your application.
 
 **Use Lovable**
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/94e257cc-dab8-4202-9aca-371630a8a876) and start prompting.
+Simply visit the project https://evergreen-event-reimagined-omega.vercel.app/ and start prompting.
 
 Changes made via Lovable will be committed automatically to this repo.
 
@@ -211,14 +210,3 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/94e257cc-dab8-4202-9aca-371630a8a876) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
