@@ -7,18 +7,21 @@ const Footer = () => {
       <div className="container mx-auto px-4 py-12">
         <div className="grid md:grid-cols-4 gap-8">
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <a href="/">
-                <img src={logoLeaf} alt="Evergreen" className="h-10 w-10" />
-              </a>
+            <a href="/" className="flex items-center gap-2 mb-4 group" aria-label="Go to homepage">
+              <img src={logoLeaf} alt="Evergreen" className="h-10 w-10 group-hover:scale-105 transition-transform" />
               <div>
                 <h3 className="font-bold text-lg">Evergreen</h3>
                 <p className="text-sm text-primary-foreground/80">Event Planner</p>
               </div>
-            </div>
+            </a>
             <p className="text-sm text-primary-foreground/80">
               Creating memorable, sustainable events that exceed expectations.
             </p>
+            <div className="mt-4">
+              <a href="tel:+254712345678" className="font-semibold text-accent hover:text-gold transition-colors text-base block">
+                +254 712 345 678
+              </a>
+            </div>
           </div>
 
           <div>
@@ -41,14 +44,6 @@ const Footer = () => {
               <li className="text-primary-foreground/80">Furniture Hire</li>
               <li className="text-primary-foreground/80">Décor & Styling</li>
             </ul>
-            <div className="mt-4">
-              <a
-                href="tel:+254712345678"
-                className="transition-colors duration-200 text-emerald-900 hover:text-yellow-500 font-semibold"
-              >
-                +254 712 345 678
-              </a>
-            </div>
           </div>
 
           <div>
@@ -77,3 +72,6 @@ const Footer = () => {
       </div>
     </footer>
   );
+};
+
+export default Footer;
