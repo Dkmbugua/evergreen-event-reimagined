@@ -8,7 +8,9 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-8">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <img src={logoLeaf} alt="Evergreen" className="h-10 w-10" />
+              <a href="/">
+                <img src={logoLeaf} alt="Evergreen" className="h-10 w-10" />
+              </a>
               <div>
                 <h3 className="font-bold text-lg">Evergreen</h3>
                 <p className="text-sm text-primary-foreground/80">Event Planner</p>
@@ -39,6 +41,14 @@ const Footer = () => {
               <li className="text-primary-foreground/80">Furniture Hire</li>
               <li className="text-primary-foreground/80">Décor & Styling</li>
             </ul>
+            <div className="mt-4">
+              <a
+                href="tel:+254712345678"
+                className="transition-colors duration-200 text-emerald-900 hover:text-yellow-500 font-semibold"
+              >
+                +254 712 345 678
+              </a>
+            </div>
           </div>
 
           <div>
@@ -58,7 +68,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center text-sm text-primary-foreground/70">
-          <p>&copy; 2024 Evergreen Event Planner. All rights reserved. Designed with <Leaf className="inline h-4 w-4 text-gold" /> for sustainability.</p>
+          <p>&copy; 2025 Evergreen Event Planner. All rights reserved. Designed with <Leaf className="inline h-4 w-4 text-gold" /> for sustainability.</p>
           <div className="mt-2">
             <a href="/privacy-policy" className="underline hover:text-gold mx-2">Privacy Policy</a>
             <a href="/terms" className="underline hover:text-gold mx-2">Terms & Conditions</a>
@@ -67,6 +77,3 @@ const Footer = () => {
       </div>
     </footer>
   );
-};
-
-export default Footer;
