@@ -68,7 +68,7 @@ const ServiceCategory = () => {
           <div className="max-w-3xl text-primary-foreground">
             <Button
               variant="ghost"
-              className="mb-4 text-primary-foreground hover:text-gold"
+              className="mb-4 text-primary-foreground hover:text-primary-foreground hover:bg-white/20"
               onClick={() => navigate("/services")}
             >
               <ArrowLeft className="mr-2 h-4 w-4" />
@@ -101,7 +101,7 @@ const ServiceCategory = () => {
               </Button>
               <Dialog open={bookingOpen} onOpenChange={setBookingOpen}>
                 <DialogTrigger asChild>
-                  <Button size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
+                  <Button size="lg" className="bg-white text-primary border-2 border-white hover:bg-white/90">
                     <Calendar className="mr-2 h-5 w-5" />
                     Book Now
                   </Button>
@@ -256,7 +256,7 @@ const ServiceCategory = () => {
                 Chat on WhatsApp
               </a>
             </Button>
-            <Button size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary" asChild>
+            <Button size="lg" className="bg-white text-primary hover:bg-white/90" asChild>
               <a href={`tel:${whatsappNumber}`}>
                 <Phone className="mr-2 h-5 w-5" />
                 {whatsappNumber}
