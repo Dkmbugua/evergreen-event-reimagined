@@ -3,8 +3,9 @@ import { Calendar, Tent, Armchair, Flower2, Camera, Utensils } from "lucide-reac
 import { Link } from "react-router-dom";
 import { serviceCategories } from "@/data/services";
 import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 
-const services = serviceCategories.slice(0, 6); // Show first 6 services on homepage
+const services = serviceCategories.slice(0, 3); // Show only 3 services on homepage for mobile-friendly UX
 
 const Services = () => {
   return (
@@ -13,13 +14,13 @@ const Services = () => {
         <div className="text-center mb-16 animate-fade-in-up">
           <h2 className="text-4xl font-bold text-primary mb-4">Our Services</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            At Evergreen, we know that the secret ingredient to a memorable, exciting event lies in the details
+            Comprehensive event solutions tailored to create extraordinary experiences
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => {
-            const iconMap: { [key: string]: any } = {
+            const iconMap: { [key: string]: React.ElementType } = {
               Calendar,
               Tent,
               Armchair,
@@ -58,6 +59,16 @@ const Services = () => {
               </Card>
             );
           })}
+        </div>
+
+        {/* View All Services Button */}
+        <div className="text-center mt-12">
+          <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90" asChild>
+            <Link to="/services">
+              View All Services
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
+          </Button>
         </div>
       </div>
     </section>

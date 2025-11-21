@@ -77,8 +77,8 @@ const Portfolio = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
 
   const filteredEvents = selectedCategory === "All" 
-    ? portfolioEvents 
-    : portfolioEvents.filter(event => event.category === selectedCategory);
+    ? portfolioEvents.slice(0, 6) // Show only 6 events max on homepage
+    : portfolioEvents.filter(event => event.category === selectedCategory).slice(0, 6);
 
   const openEventGallery = (event: typeof portfolioEvents[0]) => {
     setSelectedEvent(event);
