@@ -4,18 +4,25 @@ import { ArrowRight } from "lucide-react";
 const Hero = () => {
   return (
     <section id="home" className="relative h-[600px] md:h-[700px] w-full overflow-hidden">
-      {/* Video Background */}
+      {/* Background Video - Hidden on mobile (< 768px), shown on tablet/desktop for performance */}
       <video
+        className="absolute inset-0 w-full h-full object-cover hidden md:block"
         autoPlay
         loop
         muted
         playsInline
-        className="absolute inset-0 w-full h-full object-cover"
+        preload="metadata"
+        poster="/images/IMG-20251120-WA0022.jpg"
       >
-        <source src="/images/hero.mp4" type="video/mp4" />
-        {/* Fallback image if video doesn't load */}
-        <img src="/images/IMG-20251120-WA0022.jpg" alt="Event background" className="absolute inset-0 w-full h-full object-cover" />
+        <source src="/videos/hero-background.mp4" type="video/mp4" />
+        <source src="/videos/hero-background.webm" type="video/webm" />
       </video>
+
+      {/* Fallback Background Image for Mobile (< 768px) */}
+      <div 
+        className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat md:hidden"
+        style={{ backgroundImage: "url('/images/IMG-20251120-WA0022.jpg')" }}
+      />
       
       {/* Overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-forest/90 via-forest/70 to-transparent" />

@@ -21,13 +21,13 @@ const Header = () => {
       {/* Main navigation */}
       <div className="bg-background border-b border-border py-4 px-4">
         <div className="container mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-3">
+          <a href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity cursor-pointer">
             <img src={logoLeaf} alt="Evergreen Event Planner" className="h-12 w-12" />
             <div>
               <h1 className="text-2xl font-bold text-primary">Evergreen</h1>
               <p className="text-sm text-muted-foreground">Event Planner</p>
             </div>
-          </div>
+          </a>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-6">

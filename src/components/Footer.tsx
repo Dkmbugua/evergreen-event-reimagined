@@ -18,8 +18,13 @@ const Footer = () => {
               Creating memorable, sustainable events that exceed expectations.
             </p>
             <div className="mt-4">
-              <a href="tel:+254712345678" className="font-semibold text-accent hover:text-gold transition-colors text-base block">
-                +254 712 345 678
+              <a 
+                href="https://wa.me/254729239973?text=Hello%20Evergreen%20Event%20Planner!%20I%20would%20like%20to%20inquire%20about%20your%20services." 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="font-semibold text-accent hover:text-gold transition-colors text-base block"
+              >
+                +254 729 239 973
               </a>
             </div>
           </div>
@@ -39,10 +44,10 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold mb-4">Services</h4>
             <ul className="space-y-2 text-sm">
-              <li className="text-primary-foreground/80">Event Management</li>
-              <li className="text-primary-foreground/80">Tent Rentals</li>
-              <li className="text-primary-foreground/80">Furniture Hire</li>
-              <li className="text-primary-foreground/80">Décor & Styling</li>
+              <li><a href="/services/event-management" className="text-primary-foreground/80 hover:text-gold transition-colors">Event Management</a></li>
+              <li><a href="/services/tent-rentals" className="text-primary-foreground/80 hover:text-gold transition-colors">Tent Rentals</a></li>
+              <li><a href="/services/furniture-hire" className="text-primary-foreground/80 hover:text-gold transition-colors">Furniture Hire</a></li>
+              <li><a href="/services/decor-styling" className="text-primary-foreground/80 hover:text-gold transition-colors">Décor & Styling</a></li>
             </ul>
           </div>
 
