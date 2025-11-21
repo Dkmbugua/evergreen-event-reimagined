@@ -69,16 +69,12 @@ const portfolioEvents = [
   }
 ];
 
-const categories = ["All", "Birthday", "Wedding", "Corporate", "Outdoor", "Social"];
-
 const Portfolio = () => {
-  const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedEvent, setSelectedEvent] = useState<typeof portfolioEvents[0] | null>(null);
   const [dialogOpen, setDialogOpen] = useState(false);
 
-  const filteredEvents = selectedCategory === "All" 
-    ? portfolioEvents.slice(0, 3) // Show only 3 events on homepage for mobile optimization
-    : portfolioEvents.filter(event => event.category === selectedCategory).slice(0, 3);
+  // Show only first 3 events on homepage for mobile optimization
+  const displayEvents = portfolioEvents.slice(0, 3);
 
   const openEventGallery = (event: typeof portfolioEvents[0]) => {
     setSelectedEvent(event);
@@ -95,23 +91,9 @@ const Portfolio = () => {
           </p>
         </div>
 
-        {/* Category Filter - Hidden on mobile for cleaner view, shown on tablet+ */}
-        <div className="hidden md:flex flex-wrap justify-center gap-3 mb-12">
-          {categories.map((category) => (
-            <Button
-              key={category}
-              variant={selectedCategory === category ? "default" : "outline"}
-              onClick={() => setSelectedCategory(category)}
-              className={selectedCategory === category ? "bg-primary" : ""}
-            >
-              {category}
-            </Button>
-          ))}
-        </div>
-
-        {/* Portfolio Grid - Mobile optimized: 1 column on mobile, 2 on tablet, 3 on desktop */}
+        {/* Portfolio Grid - Mobile: 1 column, Tablet: 2 columns, Desktop: 3 columns */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {filteredEvents.map((event, index) => (
+          {displayEvents.map((event, index) => (
             <Card
               key={event.id}
               className="group overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-300 animate-fade-in-up border-border"
