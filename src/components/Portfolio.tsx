@@ -1,40 +1,90 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Camera } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
-const portfolioItems = [
+// Portfolio data structure - easily expandable by admin
+const portfolioEvents = [
   {
-    image: "/images/IMG-20251120-WA0022.jpg",
+    id: "birthday-1",
+    title: "Premium Birthday Celebration",
+    category: "Birthday",
+    description: "Elegant 30th birthday celebration with custom décor and entertainment",
+    coverImage: "/images/IMG-20251120-WA0022.jpg",
+    photos: [
+      "/images/IMG-20251120-WA0022.jpg",
+      "/images/IMG-20251120-WA0023.jpg",
+      "/images/IMG-20251120-WA0025.jpg",
+      "/images/IMG-20251120-WA0028.jpg",
+    ]
+  },
+  {
+    id: "wedding-1",
     title: "Elegant Garden Wedding",
-    category: "Wedding"
+    category: "Wedding",
+    description: "Beautiful outdoor wedding ceremony with eco-friendly décor",
+    coverImage: "/images/IMG-20251120-WA0031.jpg",
+    photos: [
+      "/images/IMG-20251120-WA0031.jpg",
+      "/images/IMG-20251120-WA0037.jpg",
+      "/images/IMG-20251120-WA0022.jpg",
+    ]
   },
   {
-    image: "/images/IMG-20251120-WA0023.jpg",
+    id: "corporate-1",
     title: "Corporate Gala Dinner",
-    category: "Corporate Event"
+    category: "Corporate",
+    description: "High-end corporate event with premium catering and entertainment",
+    coverImage: "/images/IMG-20251120-WA0023.jpg",
+    photos: [
+      "/images/IMG-20251120-WA0023.jpg",
+      "/images/IMG-20251120-WA0025.jpg",
+      "/images/IMG-20251120-WA0028.jpg",
+    ]
   },
   {
-    image: "/images/IMG-20251120-WA0025.jpg",
-    title: "Luxury Tent Setup",
-    category: "Outdoor Event"
+    id: "outdoor-1",
+    title: "Luxury Outdoor Event",
+    category: "Outdoor",
+    description: "Premium tent setup with elegant furniture and lighting",
+    coverImage: "/images/IMG-20251120-WA0025.jpg",
+    photos: [
+      "/images/IMG-20251120-WA0025.jpg",
+      "/images/IMG-20251120-WA0028.jpg",
+      "/images/IMG-20251120-WA0031.jpg",
+    ]
   },
   {
-    image: "/images/IMG-20251120-WA0028.jpg",
-    title: "Premium Furniture Hire",
-    category: "Equipment Hire"
-  },
-  {
-    image: "/images/IMG-20251120-WA0031.jpg",
-    title: "Floral Décor Design",
-    category: "Décor"
-  },
-  {
-    image: "/images/IMG-20251120-WA0037.jpg",
-    title: "Catering Excellence",
-    category: "Catering"
+    id: "social-1",
+    title: "Social Gathering Excellence",
+    category: "Social",
+    description: "Memorable social event with custom décor and catering",
+    coverImage: "/images/IMG-20251120-WA0037.jpg",
+    photos: [
+      "/images/IMG-20251120-WA0037.jpg",
+      "/images/IMG-20251120-WA0022.jpg",
+      "/images/IMG-20251120-WA0023.jpg",
+    ]
   }
 ];
 
+const categories = ["All", "Birthday", "Wedding", "Corporate", "Outdoor", "Social"];
+
 const Portfolio = () => {
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedEvent, setSelectedEvent] = useState<typeof portfolioEvents[0] | null>(null);
+  const [dialogOpen, setDialogOpen] = useState(false);
+
+  const filteredEvents = selectedCategory === "All" 
+    ? portfolioEvents 
+    : portfolioEvents.filter(event => event.category === selectedCategory);
+
+  const openEventGallery = (event: typeof portfolioEvents[0]) => {
+    setSelectedEvent(event);
+    setDialogOpen(true);
+  };
+
   return (
     <section id="portfolio" className="py-20 bg-background">
       <div className="container mx-auto px-4">
@@ -45,33 +95,87 @@ const Portfolio = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {portfolioItems.map((item, index) => (
-            <div
-              key={index}
-              className="group relative overflow-hidden rounded-lg cursor-pointer h-80 animate-fade-in-up"
-              style={{ animationDelay: `${index * 0.1}s` }}
+        {/* Category Filter */}
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
+          {categories.map((category) => (
+            <Button
+              key={category}
+              variant={selectedCategory === category ? "default" : "outline"}
+              onClick={() => setSelectedCategory(category)}
+              className={selectedCategory === category ? "bg-primary" : ""}
             >
-              <img
-                src={item.image}
-                alt={item.title}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                <div className="p-6 text-primary-foreground">
-                  <p className="text-sm font-medium text-gold mb-2">{item.category}</p>
-                  <h3 className="text-xl font-bold">{item.title}</h3>
-                </div>
-              </div>
-            </div>
+              {category}
+            </Button>
           ))}
         </div>
 
+        {/* Portfolio Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          {filteredEvents.map((event, index) => (
+            <Card
+              key={event.id}
+              className="group overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-300 animate-fade-in-up border-border"
+              style={{ animationDelay: `${index * 0.1}s` }}
+              onClick={() => openEventGallery(event)}
+            >
+              <div className="relative h-64 overflow-hidden">
+                <img
+                  src={event.coverImage}
+                  alt={event.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  loading="lazy"
+                />
+                <div className="absolute top-3 right-3 bg-gold text-forest px-3 py-1 rounded-full text-sm font-medium">
+                  {event.category}
+                </div>
+                <div className="absolute bottom-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium flex items-center gap-1">
+                  <Camera className="h-4 w-4" />
+                  {event.photos.length} Photos
+                </div>
+              </div>
+              <CardContent className="p-5">
+                <h3 className="text-xl font-bold text-primary mb-2 group-hover:text-accent transition-colors">
+                  {event.title}
+                </h3>
+                <p className="text-sm text-muted-foreground line-clamp-2">
+                  {event.description}
+                </p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        {/* Event Gallery Dialog */}
+        <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+          <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+            {selectedEvent && (
+              <>
+                <DialogHeader>
+                  <DialogTitle className="text-2xl font-bold text-primary">
+                    {selectedEvent.title}
+                  </DialogTitle>
+                  <p className="text-muted-foreground">{selectedEvent.description}</p>
+                </DialogHeader>
+                <div className="grid grid-cols-2 gap-4 mt-4">
+                  {selectedEvent.photos.map((photo, idx) => (
+                    <div key={idx} className="relative h-64 overflow-hidden rounded-lg">
+                      <img
+                        src={photo}
+                        alt={`${selectedEvent.title} - Photo ${idx + 1}`}
+                        className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
+          </DialogContent>
+        </Dialog>
+
         <div className="text-center">
           <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-105 transition-transform" asChild>
-            <a href="/gallery">
-              View Full Gallery
+            <a href="/portfolio">
+              View Full Portfolio
               <ArrowRight className="ml-2 h-5 w-5" />
             </a>
           </Button>
