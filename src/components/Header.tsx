@@ -19,13 +19,13 @@ const Header = () => {
   return (
     <header className="w-full">
       {/* Main navigation */}
-      <div className="bg-background border-b border-border py-4 px-4">
+      <div className="bg-background border-b border-border py-3 px-4">
         <div className="container mx-auto flex items-center justify-between">
-          <a href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity cursor-pointer">
-            <img src={logoLeaf} alt="Evergreen Event Planner" className="h-12 w-12" />
+          <a href="/" className="flex items-center gap-2 md:gap-3 hover:opacity-80 transition-opacity cursor-pointer">
+            <img src={logoLeaf} alt="Evergreen Event Planner" className="h-10 w-10 md:h-12 md:w-12" />
             <div>
-              <h1 className="text-2xl font-bold text-primary">Evergreen</h1>
-              <p className="text-sm text-muted-foreground">Event Planner</p>
+              <h1 className="text-xl md:text-2xl font-bold text-primary">Evergreen</h1>
+              <p className="text-xs md:text-sm text-muted-foreground hidden sm:block">Event Planner</p>
             </div>
           </a>
 
