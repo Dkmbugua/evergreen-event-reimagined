@@ -77,8 +77,8 @@ const Portfolio = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
 
   const filteredEvents = selectedCategory === "All" 
-    ? portfolioEvents.slice(0, 6) // Show only 6 events max on homepage
-    : portfolioEvents.filter(event => event.category === selectedCategory).slice(0, 6);
+    ? portfolioEvents.slice(0, 3) // Show only 3 events on homepage for mobile optimization
+    : portfolioEvents.filter(event => event.category === selectedCategory).slice(0, 3);
 
   const openEventGallery = (event: typeof portfolioEvents[0]) => {
     setSelectedEvent(event);
@@ -95,8 +95,8 @@ const Portfolio = () => {
           </p>
         </div>
 
-        {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
+        {/* Category Filter - Hidden on mobile for cleaner view, shown on tablet+ */}
+        <div className="hidden md:flex flex-wrap justify-center gap-3 mb-12">
           {categories.map((category) => (
             <Button
               key={category}
@@ -109,8 +109,8 @@ const Portfolio = () => {
           ))}
         </div>
 
-        {/* Portfolio Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        {/* Portfolio Grid - Mobile optimized: 1 column on mobile, 2 on tablet, 3 on desktop */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {filteredEvents.map((event, index) => (
             <Card
               key={event.id}
@@ -118,7 +118,7 @@ const Portfolio = () => {
               style={{ animationDelay: `${index * 0.1}s` }}
               onClick={() => openEventGallery(event)}
             >
-              <div className="relative h-64 overflow-hidden">
+              <div className="relative h-56 md:h-64 overflow-hidden">
                 <img
                   src={event.coverImage}
                   alt={event.title}
